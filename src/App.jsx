@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { supabase } from './supabaseClient'
-import  FavoritesProvider  from './components/FavComponents';
-import Favorites from './components/Favorites';
-import AudioPlayer from './components/Audioplayer';
-import SignUp from './Pages';
-import Login from './Pages';
-import Homepage from './Pages';
-import SingleShow from './Pages';
+import  { FavoritesProvider }  from './components/FavComponents';
+import { Favorites } from './components/Favorites';
+import { AudioPlayer } from './components/Audioplayer';
+import { SignUp } from './Pages';
+import { Login } from './Pages';
+import { Homepage } from './Pages';
+import { SingleShow } from './Pages';
 
 
 const App = () => {
@@ -71,4 +71,4 @@ if(!token) {
   )
 }
 
-export default App
+export { App }
