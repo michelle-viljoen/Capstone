@@ -1,0 +1,443 @@
+/* Login and Register Pages */
+
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.loginPage, .homepage {
+    background-color: #727072;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .logoImage {
+    align-self: center;
+    padding: 15px;
+  }
+  
+  .welcome {
+    display: flex;
+    align-self: center;
+    color: black;
+    font-family: fantasy;
+    max-width: 140px;
+  }
+
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    margin: 20px;
+    margin-top: 60px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+  }
+  
+  .loginButtons {
+    padding: 5px;
+    margin: 10px;
+    width: 200px;
+    border-radius: 40px;
+    border: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    align-self: center;
+  }
+
+  .noAccount {
+    text-align: center;
+  }
+
+  /* Header */
+
+  .home__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    margin: 0 auto
+  }
+
+  /* Navigation bar */
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .nav button, .filters {
+    width: 100%;
+    background-color: #54DBCB;
+    height: 40px;
+    border: 1px solid #585A5A;
+  }
+
+  .nav button:hover, .filters:hover {
+    background-color: #04C9B2;
+    border: 1px solid black;
+  }
+
+  .filters select:hover {
+    background-color: #04C9B2;
+  }
+
+  .filters {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .filters select {
+    text-align: center;
+    height: 30px;
+    background-color: #54DBCB;
+    border: none; 
+  }
+
+  .nav button, .filters select {
+    font-family: cursive;
+    font-weight: bold;
+  }
+
+/* Search form */
+
+  .search__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    background-color: lightgrey ;
+    padding: 20px;
+    
+    margin: 15px auto;
+    padding: 10px;
+    
+  }
+
+  .second__header {
+    margin: 0 auto;
+    padding: 10px;
+    text-decoration: underline;
+  }
+
+  /* Podcast preview */
+
+.preview__display {
+  width: 250px;
+  font-size: 12px;
+  /* flex: 0 0 auto;          */
+  display: flex;          
+  flex-direction: column; 
+  position: relative;
+  padding: 4px;
+ align-self: center;
+ text-align: center;
+ margin: 0 auto;
+}
+
+.preview__list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  overflow-x: auto;
+  display: flex;          
+  flex-direction: column; 
+  align-items: center; 
+}
+
+  .preview__title {
+    font-family: fantasy;
+    color: black;
+  }
+
+  .preview__description {
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+  }
+
+  .preview__genres {
+    border: 1px solid grey;
+    font-size: 16px;
+    font-weight: bolder;
+    color: black;
+    margin: 5px;
+  }
+
+  .preview__image {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Single podcast view */
+  .top__buttons {
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+    margin-bottom: 10px;
+   
+  }
+
+   .top__buttons button {
+    width: 100%;
+    background-color:#54DBCB;
+    border: 1px solid #585A5A;
+    justify-content: center;
+    font-family: cursive;
+   }
+
+   .singleshow__content {
+    margin: 0 auto;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:#585A5A;
+    width: 95%;
+    height: auto;
+   }
+
+   .single__title {
+    margin: 0 auto;
+    background-color: #54DBCB;
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+    font-family: fantasy;
+   }
+
+   .singleShow__page {
+    background-color:#585A5A;
+   }
+
+   .single__header {
+    margin-top: 0px;
+   }
+
+   .singleShow__description, .favorite__description {
+    padding: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: justify;
+    background-color: lightgray;
+   }
+
+   .preview__updated, .favorite__updated {
+    font-style: italic;
+    padding: 8px;
+   }
+
+   .singleShow__genres {
+    border-radius: 45%;
+    background-color: #04C9B2;
+    padding: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+   }
+
+   .select__season {
+   text-align: center;
+   }
+
+   .single__season {
+    margin: 15px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   }
+ 
+   .season__button {
+    max-width: 250px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 16px;
+    text-align: right;
+    vertical-align: middle; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: #54DBCB;
+    border-radius: 10px;
+   }
+
+   .season__button:hover {
+    background-color: lightgrey;
+   }
+
+   .season__image {
+    width: 70px;
+    margin-right: 90px;
+   }
+
+   .episode__select {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 20px;
+   }
+
+   .episode__list {
+    border: 1px solid orange;
+    max-width: 90%;
+    margin: 10px;
+   }
+
+   .episode__title {
+    background-color: #54DBCB;
+    width: 100%;
+    text-align: right;
+    
+      }
+    
+      .episode__description {
+    background-color: lightgray;
+    padding-left: 8px; 
+    padding-right: 8px;
+    text-align: justify;
+      }
+    
+      .episode__layout {
+        display: flex;
+        flex-direction: row;
+      }
+    
+
+   /* Favorites */
+
+   .favorite__heading {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    font-size: 26px;
+    padding: 10px;
+    background-color: #54DBCB;
+    width: 100%;
+    margin: 10px;
+   }
+
+   .favorite__page {
+    background-color: #727072;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   }
+
+   .favorite__title {
+    font-family: fantasy;
+   text-align: center;
+   background-color: #54DBCB;
+   }
+
+   .favorite__show, .favorite__season, .favorite__genre, .favorite__episode {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 3px;
+  }
+
+  .favorite__show {
+    background-color: pink;
+  }
+
+  .favorite__season {
+    background-color: lightgreen;
+  }
+
+  .favorite__genre {
+    background-color: lightgoldenrodyellow;
+  }
+
+  .favorite__episode {
+    background-color: lightblue;
+  }
+
+  /* .favorite__description {
+    text-align: justify;
+    background-color: lightgray;
+  } */
+
+  .trash__position {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    background-color: lightslategray;
+    justify-content: center;
+  }
+
+  .trashcan {
+    margin-top: 8px;
+  }
+
+  .favorite__card {
+    border: 1px solid darkslategrey;
+    max-width: 95%;
+    margin: 15px;
+    list-style-type: none;
+  }
+
+  .favorite__image {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .play__button {
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+  .microphone {
+    vertical-align: middle;
+  }
+
+  .favorite__nav {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    width: 100%;
+    
+  }
+
+  .favorite__nav button, .favorite__filters {
+    width: 100%;
+    font-family: cursive;
+    font-weight: bold;
+    background-color: #54DBCB;
+    border: 1px solid #585A5A;
+    height: 35px;
+    justify-content: center;
+  }
+
+  .favorite__filters select {
+    background-color: #54DBCB;
+    border: none;
+    font-family: cursive;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .play__episode {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+  }
+
+  .heart {
+    font-size: 20px;
+  }
+
+
+   
