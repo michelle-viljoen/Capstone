@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate, Route } from 'react-router-dom'
-import { PodcastCard }  from '../components/PodcastCard'
+import {PodcastCard}  from '../components/PodcastCard'
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Fuse from 'fuse.js'
-import { SingleShow } from '../components/SingleShow';
-import { Favorites } from '../components/Favorites';
-import { AudioPlayer } from '../components/Audioplayer';
+import {SingleShow} from '../components/SingleShow';
+import {Favorites} from '../components/Favorites';
+import {AudioPlayer} from '../components/Audioplayer';
 
 
 const Homepage = ({token}) => {
@@ -17,14 +17,11 @@ const Homepage = ({token}) => {
     const [episodeData, setEpisodeData] = useState([]);
     const [searchInput, setSearchInput] = useState('');
     const [loading, setLoading] = useState(false);
+    const [selectedGenre, setSelectedGenre] = useState("")
 
     const [episode, setEpisode] = useState(null);
 
-//   useEffect(() => {
-//     // Retrieve selected episode from local storage when the component mounts
-   
-//   }, []); // Run only once when the component mounts
-
+// Fetch the podcast data from the API 
     useEffect(() => {
         fetch('https://podcast-api.netlify.app/shows')
         .then(res => { 
@@ -37,13 +34,13 @@ const Homepage = ({token}) => {
         })
         .then(data => {
             const shuffledData = shuffleArray(data);
-            const selectedData = shuffledData.slice(0, 10);
-            setPodcastData(selectedData)
+            const selectedData = shuffledData.slice(0, 10); // select 10 random podcasts for the carousel
+            setPodcastData(selectedData) // set that as the podcast data 
             setLoading(false)
-            const storedEpisode = localStorage.getItem('lastPlayedAudio');
+            const storedEpisode = localStorage.getItem('lastPlayedAudio'); // get the last played episode from local storage
             console.log('lastPlayedAudio from local storage:', storedEpisode);
             if (storedEpisode) {
-              setEpisode(storedEpisode);
+              setEpisode(storedEpisode); // set the last played episode as the selected episode
         
             }
             console.log("Stored episode:", storedEpisode)
@@ -55,7 +52,7 @@ const Homepage = ({token}) => {
     }, [])
 
    
-
+// shuffles the podcast data for the image carousel
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -64,6 +61,8 @@ const Homepage = ({token}) => {
         return array;
     };
 
+
+// creates podcast carousel with the correct data 
     const PodcastCarousel = ({ podcastData }) => {
         return (
             <div className="podcastCard">
@@ -83,7 +82,7 @@ const Homepage = ({token}) => {
         );
     };
 
-    
+    // takes the user back to the home page when they click on the home button 
 const handleHomeClick = () => {
     fetch('https://podcast-api.netlify.app/shows')
         .then(res => {
@@ -104,7 +103,7 @@ const handleHomeClick = () => {
         });
 };
 
-
+// handles what needs to happen when selecting various filters 
 const handleSortZA = () => {
     const sortedData = [...podcastData].sort((a, b) => b.title.localeCompare(a.title));
     setPodcastData(sortedData);
@@ -127,6 +126,7 @@ const handleSortOldest = () => {
     setPodcastData(sortedData);
 };
 
+// how the filters are actually applied 
     const handleFilterChange = (event) => {
         const selectedOption = event.target.value;
         if (selectedOption === "All") {
@@ -145,7 +145,7 @@ const handleSortOldest = () => {
             .catch(error => {
                 console.error('Error fetching all shows:', error);
             });
-        }  else if (selectedOption === "ZtoA") {
+        }  else if (selectedOption === "ZtoA") { // all podcasts are displaying and this filters them as necessary
             handleSortZA()
         } else if (selectedOption === "AtoZ") {
             handleSortAZ()
@@ -158,9 +158,10 @@ const handleSortOldest = () => {
         }
     };
 
+    // available filters for the podcasts 
    const filters = <div>
         <select id="filters" onClick={handleFilterChange} >
-             <option value="" disabled selected>Filters all</option>
+             <option value="" disabled selected>Filters all</option> 
              <option value="All" >All shows</option>
              <option value="AtoZ">A - Z</option>
              <option value="ZtoA">Z - A</option>
@@ -169,6 +170,7 @@ const handleSortOldest = () => {
         </select>
                     </div> 
 
+// maps over the genres to give the correct titles 
     const genreMap = {
         1: 'Personal Growth',
         2: 'True Crime and Investigative Journalism',
@@ -181,6 +183,7 @@ const handleSortOldest = () => {
         9: 'Kids and Family',
     };
 
+    // function that filters the genres based on the selection and returns those genres only 
     const handleGenreChange = (event) => {
         const selectedGenre = event.target.value;
         setSelectedGenre(selectedGenre); // Update selectedGenre state
@@ -195,10 +198,10 @@ const handleSortOldest = () => {
                 })
                 .then(data => {
                 const filteredShows = data.filter(show =>
-                    show.genres.map(genreCode => genreMap[genreCode]).includes(selectedGenre)
+                    show.genres.map(genreCode => genreMap[genreCode]).includes(selectedGenre) 
                 )
                 setShowAllPodcasts(true);
-                setPodcastData(filteredShows);
+                setPodcastData(filteredShows); // shows only podcasts matching selected genre filter
                 
                 })
                 .catch(error => {
@@ -216,6 +219,7 @@ const handleSearchInputChange = (event) => {
     setSearchInput(event.target.value);
 };
 
+// filters the shows by title search
 const handleSearchSubmit = (event) => {
     event.preventDefault();
     fetch('https://podcast-api.netlify.app/shows')
@@ -233,19 +237,18 @@ const handleSearchSubmit = (event) => {
     );
                 const filteredPodcasts = data.filter(podcast =>
                 filteredTitles.includes(podcast.title)
+
     );
-                setPodcastData(filteredPodcasts); // Display all podcasts
+                setPodcastData(filteredPodcasts); // Display all podcasts that match search
                 setShowAllPodcasts(true); // Set to display all podcasts
             })
             .catch(error => {
                 console.error('Error fetching all shows:', error);
             });
-    // setPodcastData(filteredPodcasts);
-    // setShowAllPodcasts(true); // Show all filtered podcasts
 };
 
 
-
+// The actual search form the user can use to search by title or genre
    const SearchForm = ({ handleSearch, genres }) => (
     <form className="search__form">
       <label htmlFor="searchInput">Search by title</label><br/>
@@ -261,29 +264,33 @@ const handleSearchSubmit = (event) => {
     </form>
   );
 
-const [selectedGenre, setSelectedGenre] = useState("")
-        
+
+// logs user out of current session        
 function handleLogout() {
     sessionStorage.removeItem('token')
     navigate('/') 
 }
+
+// navigates user to favorites page
 const handleFavClicks =() => {
     navigate("/favorites")
       }
 
+      // passes information to single show page without rendering it to the current page 
       const renderSingleShow = () => {
         if (episodeData.length > 0 && podcastData.length > 0) {
             return <SingleShow episodeData={episodeData} podcastData={podcastData} filters={filters} />;
         }
-        // Return a loading indicator or null if data is not ready
+        // Return null if data is not ready
         return null;
     };
 
+    // passes information to favorites page without rendering it to the current page 
       const renderFavorites = () => {
         if (episodeData.length > 0 && podcastData.length > 0) {
             return <Favorites episodeData={episodeData} podcastData={podcastData} />;
         }
-        // Return a loading indicator or null if data is not ready
+        // Return null if data is not ready
         return null;
     };
 
@@ -296,7 +303,7 @@ const handleFavClicks =() => {
         <div className='homepage'>
             {loading}
             <header className="home__header">
-            <img src=".\images\3.png" width="100px" className="logoImage" />
+            <img src=".\images\3.png" width="200px" className="logoImage" />
            <h3 className='welcome'>Welcome back, {token.user.user_metadata.full_name}!</h3> 
           
            </header>
@@ -307,7 +314,6 @@ const handleFavClicks =() => {
            </div>
             <div>
                 {<SearchForm/>}
-                {/* {<HandleSearch/>} */}
             </div>
           <h4 className="second__header">Some shows you might be interested in. Go on, explore:</h4>
            {/* <div className="podcastCard">
@@ -332,10 +338,10 @@ const handleFavClicks =() => {
         {renderFavorites()}
                           <AudioPlayer episode={episode}/>
             <button onClick={handleLogout}>Logout</button>
-          <AudioPlayer episode={episode}/>
+ 
             </div>
             
     )
 }
  
-export { Homepage }
+export {Homepage}
