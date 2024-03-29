@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
-import { PiMicrophoneStageDuotone } from "react-icons/pi";
+//import { PiMicrophoneStageDuotone } from "react-icons/pi";
 
 
 // renders the audio player with the selected episode information
@@ -67,7 +67,7 @@ console.log('Selected episode:', episode)
 
   return (
     <div className="audio-player" key={episode.title}>
-        <h2>{episode.title} <PiMicrophoneStageDuotone className="microphone"/></h2>
+        <h2>{episode.title}</h2>
         <ReactAudioPlayer className="audio__player"
   src={audioSrc}
   controls
