@@ -1,9 +1,10 @@
 import  {React, useEffect, useState} from 'react';
-import { useFavorites } from './useFavorites';
+import {useFavorites} from './useFavorites';
 import { FaTrashAlt } from "react-icons/fa";
 import { useLocation, useNavigate } from 'react-router-dom';
-import { AudioPlayer } from './Audioplayer';
+import {AudioPlayer} from './Audioplayer';
 
+// component that controls the rendering of the favorited episodes 
 const Favorites = () => {
   const { favoriteEpisodes, toggleFavorite, } = useFavorites();
   const [selectedEpisode, setSelectedEpisode] = useState('');
@@ -11,6 +12,7 @@ const Favorites = () => {
   const [sortOption, setSortOption] = useState('');
   let navigate = useNavigate()
 
+  // spreads favorites to sort them for the filters for favorites 
   useEffect(() => {
     setSortedFavs([...favoriteEpisodes]);
 }, [favoriteEpisodes]);
@@ -19,31 +21,37 @@ const Favorites = () => {
 
   const location = useLocation();
 
+  // takes state passed to it from single show 
   const { episodeData, showData, selectedSeason } = location.state || {};
 
+  // page to display if there are no favorites selected yet
   if (!favoriteEpisodes || favoriteEpisodes.length === 0) {
     return <div>No favorite episodes yet.</div>;
   }
 
 console.log("Show data:", showData)
     
+// sets the selected episode to the clicked on episode 
 const handleEpisodeClick = (episode) => {
   setSelectedEpisode(episode);
 };
 
-
+// removes an item from favorites 
 const handleRemoveToggle = (episode, index) => {
   toggleFavorite(episode, index, showData, selectedSeason);
 };
 
+// takes a user back to the pervious page 
 const handleBack = () => {
-  navigate(-1); // Navigate back to the previous page
+  navigate(-1); 
 };
 
+// takes a user back to the home page 
 const handleHome = () => {
-  navigate('/homepage'); // Navigate back to the previous page
+  navigate('/homepage'); 
 };
 
+// the filters available for favorite episodes 
 const handleFavZA = () => {
   const sortedFav = [...favoriteEpisodes].sort((a, b) => b.title.localeCompare(a.title));
   setSortedFavs(sortedFav);
@@ -66,6 +74,7 @@ const handleFavOldest = () => {
   setSortedFavs(sortedFav);
 };
 
+// how the filters are implemented based on selection 
 const handleFavSort = (event) => {
   const selectedOption = event.target.value;
   if (selectedOption === "FZtoA") {
@@ -83,7 +92,7 @@ const handleFavSort = (event) => {
   }
 }
 
-
+// possible filters for favorites 
 const filters = <div>
 <select id="filters" onClick={handleFavSort}>
      <option value="" disabled selected>Filter favorites</option>
@@ -133,7 +142,24 @@ console.log('Episode:' , selectedEpisode)
   );
 };
 
-export { Favorites };
+export  {Favorites};
 
+// It's updating for the episode in the console, but not changing on the screen, so somewhere between storing it in Favs and rendering those Favs on the screen, something is missing.
+// This is an example of what favoriteEpisodes looks like in the console:
+// (10) [{...}, {...}, {...}, {...}, {...}]
+// 0: 
+// description: "The description of the episode"
+// episode: 4
+// file: "https://podcast-file"
+// selectedSeason:
+// description: "description of the show"
+// genres: ['All', 'Featured', 'History']
+// id: "9994"
+// image: "image for show"
+// seasons: Array (1) 
+// 0: {season: 1, title: "Season 1", image: "image"}
+// length: 1
+// title: "Tomorrow" 
+// updated: "Date"
 
 

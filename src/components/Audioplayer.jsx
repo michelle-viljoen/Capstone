@@ -1,19 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
-//import { PiMicrophoneStageDuotone } from "react-icons/pi";
+import { PiMicrophoneStageDuotone } from "react-icons/pi";
 
+
+// renders the audio player with the selected episode information
 const AudioPlayer = ({episode}) => {
   const [audioSrc, setAudioSrc] = useState('');
   const [isPlaying, setIsPlaying] = useState(false);
   const audioPlayerRef = useRef(null);
 
+  // sets the source for the audioplayer 
   useEffect(() => {
     if (episode) {
       setAudioSrc(episode.file);
       setIsPlaying(false)
     }
 
-   
+   // tried to use local storage to get and set episodes so one is always selected for audioplayer to always show on the screen 
     // const lastPlaybackState = localStorage.getItem('lastPlaybackState');
     // const lastPlayedAudio = localStorage.getItem('lastPlayedAudio');
     // if(lastPlayedAudio) {
@@ -28,11 +31,14 @@ const AudioPlayer = ({episode}) => {
     // }
   }, [episode, audioSrc]);
 
+
+  // sets the state of the audioplayer when it is playing 
   const handlePlay = () => {
     setIsPlaying(true);
     // localStorage.setItem('lastPlayedAudio', audioSrc);
   };
 
+   // sets the state of the audioplayer when it is paused 
   const handlePause = () => {
     setIsPlaying(false);
   };
@@ -44,11 +50,13 @@ const AudioPlayer = ({episode}) => {
       }
     };
 
+    // removes audio play storage once played 
   const handleEnd = () => {
     console.log("Ended song")
     localStorage.removeItem('lastPlayedAudio');
   }
 
+  // don't return anything in the audioplayer until there is an episode and a source file to play 
   if (!episode || !audioSrc) {
     return null;
   }
@@ -59,7 +67,7 @@ console.log('Selected episode:', episode)
 
   return (
     <div className="audio-player" key={episode.title}>
-        <h2>{episode.title} </h2>
+        <h2>{episode.title} <PiMicrophoneStageDuotone className="microphone"/></h2>
         <ReactAudioPlayer className="audio__player"
   src={audioSrc}
   controls
@@ -76,7 +84,7 @@ console.log('Selected episode:', episode)
   );
 };
 
-export { AudioPlayer };
+export {AudioPlayer};
 
 
 

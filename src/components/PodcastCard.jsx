@@ -1,16 +1,17 @@
 
 import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-//import { Carousel } from 'react-responsive-carousel';
-//import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+// the podcast preview 
 export function PodcastCard (props)  {
     let navigate = useNavigate()
     
+    // when clicked, navigates a user to the detailed single show view 
     const handleClick = () => {
         navigate(`/podcasts/${props.id}`);
     };
 
+    // maps over the genres to display the correct titles 
     const genreMap = {
         1: 'Personal Growth',
         2: 'True Crime and Investigative Journalism',
