@@ -1,10 +1,10 @@
-import Login from './Login'
-import SignUp from './SignUp'
-import Homepage from './Homepage'
-import SingleShow from '../components/SingleShow'
-import FavoriteShows from '../components/Favorites'
+import { Login } from './Login'
+import { SignUp } from './SignUp'
+import { Homepage } from './Homepage'
+import { SingleShow } from '../components/SingleShow'
+import { FavoriteShows } from '../components/Favorites'
 
 
-export default {
+export {
     Login, SignUp, Homepage, SingleShow, FavoriteShows
 }
