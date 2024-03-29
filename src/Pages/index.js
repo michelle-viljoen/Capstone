@@ -5,6 +5,6 @@ import SingleShow from '../components/SingleShow'
 import FavoriteShows from '../components/Favorites'
 
 
-export {
+export default {
     Login, SignUp, Homepage, SingleShow, FavoriteShows
 }
