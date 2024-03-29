@@ -76,7 +76,7 @@ console.log('Selected episode:', episode)
   );
 };
 
-export default AudioPlayer;
+export { AudioPlayer };
 
 
 
