@@ -41,7 +41,7 @@ return(
   
        <div className="loginPage">
        <h1 className="welcome">Welcome to</h1>
-       <img src=".\src\images\3.png" width="300px" className="logoImage" />
+       <img src=".\images\3.png" width="300px" className="logoImage" />
     <form onSubmit={handleSubmit} className="loginForm">
     <label htmlFor="fullName">Full name</label>
       <input
