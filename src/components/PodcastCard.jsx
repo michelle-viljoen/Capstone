@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 //import { Carousel } from 'react-responsive-carousel';
 //import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-export default function PodcastCard (props)  {
+export function PodcastCard (props)  {
     let navigate = useNavigate()
     
     const handleClick = () => {
