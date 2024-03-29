@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
  import { Link, useNavigate } from 'react-router-dom'
  import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import PodcastCard  from '../components/PodcastCard'
+import { PodcastCard }  from '../components/PodcastCard'
 
 const Login = ({setToken}) => {
   const [podcastData, setPodcastData] = useState([])
@@ -116,4 +116,4 @@ return(
 )
 }
 
-export default Login
+export { Login }
