@@ -2,7 +2,7 @@ import  {React, useEffect, useState} from 'react';
 import useFavorites from './useFavorites';
 import { FaTrashAlt } from "react-icons/fa";
 import { useLocation, useNavigate } from 'react-router-dom';
-import AudioPlayer from './Audioplayer';
+import { AudioPlayer } from './Audioplayer';
 
 const Favorites = () => {
   const { favoriteEpisodes, toggleFavorite, } = useFavorites();
@@ -132,24 +132,7 @@ console.log('Episode:' , selectedEpisode)
   );
 };
 
-export default Favorites;
+export { Favorites };
 
-// It's updating for the episode in the console, but not changing on the screen, so somewhere between storing it in Favs and rendering those Favs on the screen, something is missing.
-// This is an example of what favoriteEpisodes looks like in the console:
-// (10) [{...}, {...}, {...}, {...}, {...}]
-// 0: 
-// description: "The description of the episode"
-// episode: 4
-// file: "https://podcast-file"
-// selectedSeason:
-// description: "description of the show"
-// genres: ['All', 'Featured', 'History']
-// id: "9994"
-// image: "image for show"
-// seasons: Array (1) 
-// 0: {season: 1, title: "Season 1", image: "image"}
-// length: 1
-// title: "Tomorrow" 
-// updated: "Date"
 
 
