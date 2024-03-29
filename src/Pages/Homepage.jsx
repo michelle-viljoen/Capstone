@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate, Route } from 'react-router-dom'
-import PodcastCard  from '../components/PodcastCard'
+import { PodcastCard }  from '../components/PodcastCard'
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Fuse from 'fuse.js'
-import SingleShow from '../components/SingleShow';
-import Favorites from '../components/Favorites';
-import AudioPlayer from '../components/Audioplayer';
+import { SingleShow } from '../components/SingleShow';
+import { Favorites } from '../components/Favorites';
+import { AudioPlayer } from '../components/Audioplayer';
 
 
 const Homepage = ({token}) => {
@@ -338,4 +338,4 @@ const handleFavClicks =() => {
     )
 }
  
-export default Homepage
+export { Homepage }
