@@ -1,3 +1,7 @@
+As a CodeSpace student, we are required to build a podcast app for our final project. I created an app called Field Mouse Studios using React.js as my primary framework. 
+Please view my app here: 
+https://fieldmousestudios.netlify.app
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
