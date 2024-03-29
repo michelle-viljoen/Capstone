@@ -1,5 +1,5 @@
 import  {React, useEffect, useState} from 'react';
-import useFavorites from './useFavorites';
+import { useFavorites } from './useFavorites';
 import { FaTrashAlt } from "react-icons/fa";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AudioPlayer } from './Audioplayer';
