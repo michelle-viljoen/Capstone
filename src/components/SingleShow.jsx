@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 //import { supabase } from '@supabase/auth-ui-shared';
-import  useFavorites from './useFavorites';
-import FavoritesCard from './FavoritesCard';
-import Favorites from './Favorites';
-import AudioPlayer from './Audioplayer';
+import  { useFavorites } from './useFavorites';
+import { Favorites } from './Favorites';
+import { AudioPlayer } from './Audioplayer';
 
 const SingleShow = ({episodeData, podcastData, filters, episodes}) => {
     let navigate = useNavigate()
@@ -216,4 +215,4 @@ console.log("Show data:", showData)
     );
 };
 
-export default SingleShow;
+export { SingleShow };
