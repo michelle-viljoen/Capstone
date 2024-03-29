@@ -296,7 +296,7 @@ const handleFavClicks =() => {
         <div className='homepage'>
             {loading}
             <header className="home__header">
-            <img src=".\src\images\3.png" width="100px" className="logoImage" />
+            <img src=".\images\3.png" width="100px" className="logoImage" />
            <h3 className='welcome'>Welcome back, {token.user.user_metadata.full_name}!</h3> 
           
            </header>
