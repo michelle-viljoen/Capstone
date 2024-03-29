@@ -101,6 +101,7 @@ console.log('Episode:' , selectedEpisode)
     <div className="favorite__page">
       
       <h2 className="favorite__heading">Favorite Episodes</h2>
+      <img src="..\images\3.png"  className="pageLogoImage" />
       <div className="favorite__nav">
       <button onClick={handleHome}>Home</button>
       <button onClick={handleBack}>Back</button>
