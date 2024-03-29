@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { SignUp, Login, Homepage, SingleShow } from './pages'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { supabase } from './supabaseClient'
 import  FavoritesProvider  from './components/FavComponents';
 import Favorites from './components/Favorites';
-import AudioPlayer from './components/Audioplayer'
+import AudioPlayer from './components/Audioplayer';
+import SignUp from './pages';
+import Login from './pages';
+import Homepage from './pages';
+import SingleShow from './pages';
 
 
 const App = () => {
