@@ -4,10 +4,10 @@ import { supabase } from './supabaseClient'
 import  FavoritesProvider  from './components/FavComponents';
 import Favorites from './components/Favorites';
 import AudioPlayer from './components/Audioplayer';
-import SignUp from './pages';
-import Login from './pages';
-import Homepage from './pages';
-import SingleShow from './pages';
+import SignUp from './Pages';
+import Login from './Pages';
+import Homepage from './Pages';
+import SingleShow from './Pages';
 
 
 const App = () => {
