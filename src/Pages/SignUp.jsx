@@ -66,4 +66,4 @@ return(
 )
 }
 
-export default SignUp
+export { SignUp }
