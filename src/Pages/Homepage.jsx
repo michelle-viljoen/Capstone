@@ -308,7 +308,7 @@ const handleFavClicks =() => {
            </header>
            <div className="nav">
             <button onClick={handleHomeClick}>Home</button>
-            <button onClick={handleFavClicks}>Favourites</button>
+            <button onClick={handleFavClicks}>Favorites</button>
             <div className="filters">{filters}</div>
            </div>
             <div>
