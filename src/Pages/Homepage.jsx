@@ -230,18 +230,17 @@ const handleSearchSubmit = (event) => {
                 return res.json();
             })
             .then(data => {
-                const titles = data.map(podcast => podcast.title);
-    
-                const filteredTitles = titles.filter(title =>
-                 title.toLowerCase().includes(searchInput.toLowerCase())
-    );
-                const filteredPodcasts = data.filter(podcast =>
-                filteredTitles.includes(podcast.title)
+                const fuse = new Fuse(data, { keys: ['title'], includeScore: true });    
+                const searchResults = fuse.search(searchInput);
 
-    );
+                if (searchResults.length === 0) {
+                    alert("There are no podcasts that match your search criteria");
+                } else {
+                const filteredPodcasts = searchResults.map(result => result.item);
+
                 setPodcastData(filteredPodcasts); // Display all podcasts that match search
                 setShowAllPodcasts(true); // Set to display all podcasts
-            })
+}})
             .catch(error => {
                 console.error('Error fetching all shows:', error);
             });
