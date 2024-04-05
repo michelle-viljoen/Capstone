@@ -166,7 +166,7 @@ console.log("Show data:", showData)
             <img src="..\images\3.png"  className="pageLogoImage" />
            <div className="top__buttons">
             <button onClick={handleHomeClick}>Home</button>
-            <button onClick={() => handleFavClicks({ episodeData, showData, selectedSeason })}>Favourites</button>
+            <button onClick={() => handleFavClicks({ episodeData, showData, selectedSeason })}>Favorites</button>
            </div>
            </header>
           
