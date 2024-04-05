@@ -98,8 +98,8 @@ const filters = <div>
      <option value="" disabled selected>Filter favorites</option>
      <option value="FAtoZ" >A - Z</option>
      <option value="FZtoA" >Z - A</option>
-     <option value="FNewest">Most recently added favorites</option>
-     <option value="FOldest">Oldest favorite shows</option>
+     <option value="FNewest">Newest favorites</option>
+     <option value="FOldest">Oldest favorites</option>
 </select>
             </div> 
 
