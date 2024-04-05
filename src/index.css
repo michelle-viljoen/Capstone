@@ -447,4 +447,13 @@
   width: 350px;
   }
 
+@media only screen and (max-width: 600px) {
+
+    .logoImage {
+      width: 160px;
+    }
+  }
+
+
+
    
